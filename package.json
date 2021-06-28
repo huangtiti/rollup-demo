@@ -1,5 +1,5 @@
 {
-  "name": "rollup-demo",
+  "name": "{{projectName}}",
   "version": "0.1.0",
   "private": true,
   "main": "dist/lib/index.js",
@@ -22,7 +22,7 @@
       "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
-  "author": "huangtingting",
+  "author": "{{author}}",
   "lint-staged": {
     "linters": {
       "*.{js,ts,tsx}": [
