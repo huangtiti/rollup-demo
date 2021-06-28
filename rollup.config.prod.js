@@ -6,6 +6,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import common from 'rollup-plugin-commonjs';
 import globals from 'rollup-plugin-node-globals';
 import filesize from 'rollup-plugin-filesize';
+import { terser } from 'rollup-plugin-terser';
 
 const pkg = require('./package.json');
 
@@ -46,6 +47,7 @@ export default [
         extensions: ['.jsx', '.tsx', '.js', '.ts'],
       }),
       globals(),
+      terser(),
       filesize(),
     ],
     external: [
@@ -67,7 +69,9 @@ export default [
       },
     },
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        extensions: [ '.js', '.json', '.jsx' ]
+      }),
       common({
         include: 'node_modules/**',
       }),
@@ -85,6 +89,7 @@ export default [
         extensions: ['.jsx', '.tsx', '.js', '.ts'],
       }),
       globals(),
+      terser(),
       filesize(),
     ],
     external: [

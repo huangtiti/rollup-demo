@@ -31,7 +31,9 @@ export default {
   },
   plugins: [
     testFunc(),
-    nodeResolve(),
+    nodeResolve({
+        extensions: [ '.js', '.json', '.jsx' ]
+    }),
     common({
       include: 'node_modules/**',
     }),
