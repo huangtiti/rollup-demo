@@ -1,5 +1,6 @@
 {
-  "name": "{{projectName}}",
+  "name":"rollup-demo",
+  "projectName":"{{projectName}}",
   "version": "0.1.0",
   "private": true,
   "main": "dist/lib/index.js",
@@ -19,26 +20,10 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "author": "{{author}}",
-  "lint-staged": {
-    "linters": {
-      "*.{js,ts,tsx}": [
-        "eslint",
-        "git add"
-      ],
-      "*.{css,scss}": [
-        "stylelint"
-      ]
-    },
-    "ignore": [
-      "bin/server.js",
-      "src/lib/**/*",
-      "*.test.(j|t)s"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -61,11 +46,15 @@
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
     "@types/react": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "antd": "^4.16.3",
     "babel-jest": "^27.0.2",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "cross-env": "^7.0.3",
+    "eslint": "^7.29.0",
+    "eslint-plugin-react": "^7.24.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "jest-css-modules": "^2.1.0",
@@ -75,6 +64,7 @@
     "node-notifier": "^10.0.0",
     "node-sass": "^6.0.0",
     "postcss": "^8.3.4",
+    "pre-commit": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
