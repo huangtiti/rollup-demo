@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "allowJs": true,
+    "checkJs": false,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports":true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "paths": {
+      "src": ["./src/*"]
+    },
+  },
+  "files": ["./js_transition.d.ts"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"],
+  "awesomeTypescriptLoaderOptions": {
+    // 加速编译
+    "useBabel": true
+  }
+}

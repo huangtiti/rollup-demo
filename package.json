@@ -2,25 +2,41 @@
   "name": "rollup-demo",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "react-dom": "^17.0.2"
   },
+  "typings": "dist/types/src/index.d.ts",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rollup -c rollup.config.dev.js -w",
+    "build": "npm run test && rollup -c rollup.config.prod.js",
+    "test": "cross-env BABEL_ENV='test' jest --env=jsdom",
+    "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
+    "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "author": "huangtingting",
+  "lint-staged": {
+    "linters": {
+      "*.{js,ts,tsx}": [
+        "eslint",
+        "git add"
+      ],
+      "*.{css,scss}": [
+        "stylelint"
+      ]
+    },
+    "ignore": [
+      "bin/server.js",
+      "src/lib/**/*",
+      "*.test.(j|t)s"
     ]
   },
   "browserslist": {
@@ -34,5 +50,45 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-image": "^2.0.6",
+    "@rollup/pluginutils": "^4.1.0",
+    "@testing-library/react": "^11.2.7",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.170",
+    "@types/react": "^17.0.11",
+    "antd": "^4.16.3",
+    "babel-jest": "^27.0.2",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "cross-env": "^7.0.3",
+    "husky": "^6.0.0",
+    "jest": "^27.0.4",
+    "jest-css-modules": "^2.1.0",
+    "jest-preset-angular": "^9.0.4",
+    "lint-staged": "^11.0.0",
+    "lodash-es": "^4.17.21",
+    "node-notifier": "^10.0.0",
+    "node-sass": "^6.0.0",
+    "postcss": "^8.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-watch": "^4.3.1",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.2"
   }
 }
