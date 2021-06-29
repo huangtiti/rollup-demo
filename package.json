@@ -13,7 +13,7 @@
   "typings": "dist/types/src/index.d.ts",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
-    "build": "npm run test && rollup -c rollup.config.prod.js",
+    "build": "rollup -c rollup.config.prod.js",
     "test": "cross-env BABEL_ENV='test' jest --env=jsdom",
     "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
     "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom"
