@@ -27,6 +27,11 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -44,6 +49,7 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.9.4",
     "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@rollup/plugin-image": "^2.0.6",
     "@rollup/pluginutils": "^4.1.0",
     "@testing-library/react": "^11.2.7",
