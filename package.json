@@ -17,7 +17,6 @@
     "test": "cross-env BABEL_ENV='test' jest --env=jsdom",
     "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
     "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom",
-    "commit": "git-cz",
     "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "release": "standard-version"
   },
