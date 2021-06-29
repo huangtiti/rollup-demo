@@ -18,11 +18,6 @@
     "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
     "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
