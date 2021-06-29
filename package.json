@@ -13,8 +13,19 @@
   "typings": "dist/types/src/index.d.ts",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
-    "build": "rollup -c rollup.config.prod.js",
-    "test": "cross-env BABEL_ENV='test' jest --env=jsdom"
+    "build": "npm run test && rollup -c rollup.config.prod.js",
+    "test": "cross-env BABEL_ENV='test' jest --env=jsdom",
+    "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
+    "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom",
+    "commit": "git-cz",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
+    "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "browserslist": {
     "production": [
