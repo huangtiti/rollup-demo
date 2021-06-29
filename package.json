@@ -13,6 +13,8 @@
   "typings": "dist/types/src/index.d.ts",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
+    "prestart": "rm -rf dist",
+    "prebuild": "rm -rf dist",
     "build": "npm run test && rollup -c rollup.config.prod.js",
     "test": "cross-env BABEL_ENV='test' jest --env=jsdom",
     "test:coverage": "cross-env BABEL_ENV='test' jest --coverage --env=jsdom",
@@ -81,6 +83,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
     "rollup-watch": "^4.3.1",
+    "standard-version": "^9.3.0",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.2"
   }
