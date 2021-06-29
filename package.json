@@ -13,7 +13,8 @@
   "typings": "dist/types/src/index.d.ts",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
-    "build": "rollup -c rollup.config.prod.js"
+    "build": "rollup -c rollup.config.prod.js",
+    "test:watch": "cross-env BABEL_ENV='test' jest --watch --notify --env=jsdom"
   },
   "browserslist": {
     "production": [
