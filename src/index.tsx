@@ -29,7 +29,7 @@ const RollupDemo = () => {
     <div className="appContainer">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p onClick={()=>setInitNum(initNum+1)}>
+        <p onClick={showModal}>
           {initNum} 
         </p>
         <a

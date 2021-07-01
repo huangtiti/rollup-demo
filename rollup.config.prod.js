@@ -29,23 +29,18 @@ export default [
       },
     },
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        extensions: ['.js', '.json', '.jsx']
+      }),
       common({
         include: 'node_modules/**',
       }),
-      typescript(),
+      typescript({
+        useTsconfigDeclarationDir: true
+      }),
       image(),
       postcss(),
-      babel({
-        presets: [
-          '@babel/preset-react',
-        ],
-        plugins: [ ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] ],
-        babelrc: false, // 不采用babelrc配置，否则上面的presets设置无效
-        compact: true, // 事实上，只要不为auto就不会警告
-        exclude: 'node_modules/**',
-        extensions: ['.jsx', '.tsx', '.js', '.ts'],
-      }),
+      babel(),
       globals(),
       terser(),
       filesize(),
@@ -75,19 +70,12 @@ export default [
       common({
         include: 'node_modules/**',
       }),
-      typescript(),
+      typescript({
+        useTsconfigDeclarationDir: true
+      }),
       image(),
       postcss(),
-      babel({
-        presets: [
-          '@babel/preset-react',
-        ],
-        plugins: [ ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] ],
-        babelrc: false, // 不采用babelrc配置，否则上面的presets设置无效
-        compact: true, // 事实上，只要不为auto就不会警告
-        exclude: 'node_modules/**',
-        extensions: ['.jsx', '.tsx', '.js', '.ts'],
-      }),
+      babel(),
       globals(),
       terser(),
       filesize(),

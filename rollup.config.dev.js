@@ -8,6 +8,7 @@ import common from 'rollup-plugin-commonjs';
 import globals from 'rollup-plugin-node-globals';
 import filesize from 'rollup-plugin-filesize'
 import { terser } from 'rollup-plugin-terser';
+
 const testFunc = require('./plugin/rollup-plugin-test');
 const pkg = require('./package.json');
 
@@ -27,6 +28,7 @@ export default {
     globals: {
       'react-dom': 'ReactDOM',
       react: 'React',
+      antd:'antd',
     },
   },
   plugins: [
@@ -37,19 +39,12 @@ export default {
     common({
       include: 'node_modules/**',
     }),
-    typescript(),
+    typescript({
+      useTsconfigDeclarationDir: true
+    }),
     image(),
     postcss(),
-    babel({
-      presets: [
-        '@babel/preset-react',
-      ],
-      plugins: [ ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] ],
-      babelrc: false, // 不采用babelrc配置，否则上面的presets设置无效
-      compact: true, // 事实上，只要不为auto就不会警告
-      exclude: 'node_modules/**',
-      extensions: ['.jsx', '.tsx', '.js', '.ts'],
-    }),
+    babel(),
     globals(),
     filesize(),
     terser(),
@@ -61,6 +56,6 @@ export default {
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
-    'react-is'
+    'react-is',
   ],
 };
