@@ -6,15 +6,27 @@ import typescript from 'rollup-plugin-typescript2';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import common from 'rollup-plugin-commonjs';
 import globals from 'rollup-plugin-node-globals';
-import filesize from 'rollup-plugin-filesize'
+import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 
 const testFunc = require('./plugin/rollup-plugin-test');
 const pkg = require('./package.json');
 
+// 如果把antd打进包里，加上此配置
+// babel({
+//   presets: [
+//     '@babel/preset-react',
+//   ],
+//   plugins: [ ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] ],
+//   babelrc: false, // 不采用babelrc配置，否则上面的presets设置无效
+//   compact: true, // 事实上，只要不为auto就不会警告
+//   exclude: 'node_modules/**',
+//   extensions: ['.jsx', '.tsx', '.js', '.ts'],
+// })
+
 function onwarn(warning) {
   if (warning.code !== 'CIRCULAR_DEPENDENCY') {
-      console.error(`(!) ${warning.message}`);
+    console.error(`(!) ${warning.message}`);
   }
 }
 export default {
@@ -28,19 +40,19 @@ export default {
     globals: {
       'react-dom': 'ReactDOM',
       react: 'React',
-      antd:'antd',
+      antd: 'antd',
     },
   },
   plugins: [
     testFunc(),
     nodeResolve({
-        extensions: [ '.js', '.json', '.jsx' ]
+      extensions: ['.js', '.json', '.jsx'],
     }),
     common({
       include: 'node_modules/**',
     }),
     typescript({
-      useTsconfigDeclarationDir: true
+      useTsconfigDeclarationDir: true,
     }),
     image(),
     postcss(),
@@ -56,6 +68,5 @@ export default {
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
-    'react-is',
   ],
 };

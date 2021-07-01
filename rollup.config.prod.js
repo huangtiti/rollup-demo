@@ -12,7 +12,7 @@ const pkg = require('./package.json');
 
 function onwarn(warning) {
   if (warning.code !== 'CIRCULAR_DEPENDENCY') {
-      console.error(`(!) ${warning.message}`);
+    console.error(`(!) ${warning.message}`);
   }
 }
 export default [
@@ -30,13 +30,13 @@ export default [
     },
     plugins: [
       nodeResolve({
-        extensions: ['.js', '.json', '.jsx']
+        extensions: ['.js', '.json', '.jsx'],
       }),
       common({
         include: 'node_modules/**',
       }),
       typescript({
-        useTsconfigDeclarationDir: true
+        useTsconfigDeclarationDir: true,
       }),
       image(),
       postcss(),
@@ -48,7 +48,6 @@ export default [
     external: [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
-      'react-is'
     ],
   },
   {
@@ -61,17 +60,18 @@ export default [
       globals: {
         'react-dom': 'ReactDOM',
         react: 'React',
+        antd: 'antd',
       },
     },
     plugins: [
       nodeResolve({
-        extensions: [ '.js', '.json', '.jsx' ]
+        extensions: ['.js', '.json', '.jsx'],
       }),
       common({
         include: 'node_modules/**',
       }),
       typescript({
-        useTsconfigDeclarationDir: true
+        useTsconfigDeclarationDir: true,
       }),
       image(),
       postcss(),
@@ -83,7 +83,6 @@ export default [
     external: [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
-      'react-is'
     ],
-  }
-]
+  },
+];

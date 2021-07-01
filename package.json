@@ -6,10 +6,6 @@
   "private": true,
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "typings": "dist/types/index.d.ts",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
@@ -22,21 +18,13 @@
     "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "release": "standard-version"
   },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   },
   "devDependencies": {
@@ -59,7 +47,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.29.0",
     "eslint-plugin-react": "^7.24.0",
-    "husky": "^6.0.0",
+    "husky": "^1.0.1",
     "jest": "^27.0.4",
     "jest-css-modules": "^2.1.0",
     "jest-preset-angular": "^9.0.4",
@@ -67,11 +55,13 @@
     "lodash-es": "^4.17.21",
     "node-notifier": "^10.0.0",
     "node-sass": "^6.0.0",
-    "postcss": "^8.3.4",
+    "postcss": "^8.1.9",
+    "postcss-import": "12.0.1",
     "pre-commit": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
+    "rollup": "^2.52.6",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.1.1",
@@ -84,9 +74,12 @@
     "rollup-watch": "^4.3.1",
     "standard-version": "^9.3.0",
     "ts-jest": "^27.0.3",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "antd": "^4.16.3"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "antd": "^4.16.3"
   }
 }
